@@ -5,5 +5,6 @@ export enum Rol {
     COLABORADOR = "Colaborador",
     RRHH = "RRHH",
     GARITA = "Garita",
+    LOGISTICA= "Logistica"
   }
   

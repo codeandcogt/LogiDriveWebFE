@@ -33,7 +33,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ children }) => {
   return (
     <aside 
       className={`h-screen p-4 transition-all duration-300 ease-in-out ${
-        isFixed || isExpanded ? 'w-72' : 'w-24'
+        isFixed || isExpanded ? 'w-72' : 'w-28'
       }`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -52,7 +52,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ children }) => {
           </button>
         </div>
         <SidebarContext.Provider value={{ isExpanded: isExpanded || isFixed, isFixed }}>
-          <ul className="flex-1 mt-1">{children}</ul>
+          <ul className="flex-1 mt-1 overflow-y-auto">
+            <div className="h-full">{children}</div>
+          </ul>
         </SidebarContext.Provider>
       </nav>
     </aside>
@@ -86,17 +88,21 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
   return (
     <li
       className={`
-        relative flex items-center py-2 px-3 my-1
+        relative flex items-center py-2 px-3 my-1 mx-2
         font-medium rounded-xl cursor-pointer
         transition-colors group
-        ${active
-          ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-          : "hover:bg-indigo-50 text-gray-600"
+        ${
+          active
+            ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
+            : "hover:bg-indigo-50 text-gray-600"
         }
+        ${isExpanded ? "" : "justify-center"}
       `}
       onClick={() => navigate(url)}
     >
-      {icon}
+      <div className={isExpanded ? "" : "flex justify-center items-center"}>
+        {icon}
+      </div>
       <span
         className={`overflow-hidden transition-all ${
           isExpanded ? "w-52 ml-3" : "w-0"
@@ -110,19 +116,6 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
             isExpanded ? "" : "top-2"
           }`}
         />
-      )}
-
-      {!isExpanded && (
-        <div
-          className={`
-            absolute left-full rounded-md px-2 py-1 ml-6
-            bg-indigo-100 text-indigo-800 text-sm
-            invisible opacity-20 -translate-x-3 transition-all
-            group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
-          `}
-        >
-          {text}
-        </div>
       )}
     </li>
   );
