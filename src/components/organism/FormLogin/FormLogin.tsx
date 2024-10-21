@@ -1,16 +1,7 @@
 import React from "react";
 import { FormInput } from "@/components/atom";
 import { Button } from "@/components/ui/button";
-import { FormikProps } from "formik";
-
-interface LoginValues {
-  email: string;
-  password: string;
-}
-
-interface FormLoginProps {
-  formik: FormikProps<LoginValues>;
-}
+import { FormLoginProps } from "@/interface";
 
 export const FormLogin: React.FC<FormLoginProps> = ({ formik }) => {
   return (
@@ -41,7 +32,11 @@ export const FormLogin: React.FC<FormLoginProps> = ({ formik }) => {
             helperText={formik.errors.password}
           />
           <div className={`w-full h-px bg-gray-300 my-4 `}></div>
-          <Button type="submit" className="w-full py-3 text-lg">
+          <Button
+            type="submit"
+            className="w-full py-3 text-lg"
+            disabled={formik.isSubmitting}
+          >
             Ingresar
           </Button>
         </form>

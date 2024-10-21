@@ -1,9 +1,10 @@
 /* eslint-disable react-refresh/only-export-components */
 import { Route } from "@/lib";
 import { lazy } from "react";
+import { ValidateGuard } from "../guards";
+import { Rol } from "@/types";
 
 const Home = lazy(() => import("../../screen").then(module => ({ default: module.Home })));
-const Login = lazy(() => import("../../screen").then(module => ({ default: module.Login })));
 const Area = lazy(() => import("../../screen").then(module => ({ default: module.Area })));
 const Assignment = lazy(() => import("../../screen").then(module => ({ default: module.Assignment })));
 const Inspection = lazy(() => import("../../screen").then(module => ({ default: module.Inspection })));
@@ -18,16 +19,20 @@ const Report = lazy(() => import("../../screen").then(module => ({ default: modu
 
 export const routes: Route[] = [
     {
-        path: "/",
-        element: <Login />
-    },
-    {
         path: "/home",
-        element: <Home />
+        element:(
+            <ValidateGuard  permission={[Rol.ADMIN, Rol.ADMINLOGISTICA, Rol.COLABORADOR, Rol.GARITA, Rol.RRHH, Rol.SUPERADMIN]}>
+                <Home />
+            </ValidateGuard>
+        ) 
     },
     {
         path: "/area",
-        element: <Area />
+        element:(
+            <ValidateGuard permission={[Rol.ADMIN]}>
+                <Area />
+            </ValidateGuard>
+        ) 
     },
     {
         path: "/assignment",
