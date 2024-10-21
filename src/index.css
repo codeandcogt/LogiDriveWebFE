@@ -3,6 +3,9 @@
 @tailwind utilities;
 @layer base {
   :root {
-    --radius: 0.5rem
+    background: var(--SilverCloud, #F5F5F5);
+    --radius: 0.5rem;
+    font-family: "Urbanist", sans-serif;
+    font-optical-sizing: auto;
   }
 }
