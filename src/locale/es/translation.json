@@ -1,0 +1,58 @@
+{
+    "common": {
+      "buttons": {
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "create": "Crear",
+        "submit": "Enviar"
+      },
+      "messages": {
+        "success": {
+          "create": "¡Creado con éxito!",
+          "update": "¡Actualizado con éxito!",
+          "delete": "¡Eliminado con éxito!"
+        },
+        "error": {
+          "create": "Error al crear",
+          "update": "Error al actualizar",
+          "delete": "Error al eliminar"
+        }
+      }
+    },
+    "areas": {
+      "title": "Áreas",
+      "form": {
+        "name": "Nombre",
+        "description": "Descripción",
+        "status": "Estado"
+      },
+      "validation": {
+        "name": {
+          "required": "El nombre es requerido",
+          "min": "El nombre debe tener al menos {{min}} caracteres",
+          "max": "El nombre no puede tener más de {{max}} caracteres",
+          "format": "El nombre debe comenzar con una letra y solo puede contener letras y espacios"
+        },
+        "description": {
+          "required": "La descripción es requerida",
+          "min": "La descripción debe tener al menos {{min}} caracteres",
+          "max": "La descripción no puede tener más de {{max}} caracteres"
+        }
+      },
+      "messages": {
+        "success": {
+          "created": "¡Área creada exitosamente!",
+          "updated": "¡Área actualizada exitosamente!",
+          "deleted": "¡Área eliminada exitosamente!"
+        },
+        "error": {
+          "create": "No se pudo crear el área",
+          "update": "No se pudo actualizar el área",
+          "delete": "No se pudo eliminar el área",
+          "tryAgain": "Por favor, verifica tu conexión e inténtalo nuevamente"
+        }
+      }
+    }
+  }

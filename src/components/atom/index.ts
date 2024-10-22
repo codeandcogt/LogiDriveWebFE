@@ -1,2 +1,5 @@
 export * from "./icons"
 export * from "./Form"
+export * from "./tableData"
+export * from "./cardForm"
+export * from "./modalDelete"

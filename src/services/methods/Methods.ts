@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 import { API_BASE_URL } from "../env/env";
 import { ApiResponse } from "@/interface";
 
@@ -29,21 +29,37 @@ const handleRequest = async <T>(
   }
 };
 
-export const get = async <T>(url: string): Promise<ApiResponse<T>> =>
-  handleRequest<T>(api.get<ApiResponse<T>>(url));
+const createRequestConfig = (token?: string): AxiosRequestConfig => {
+  const config: AxiosRequestConfig = {};
+  if (token) {
+    config.headers = { ...config.headers, Authorization: `Bearer ${token}` };
+  }
+  return config;
+};
+
+export const get = async <T>(url: string, token?: string): Promise<ApiResponse<T>> =>
+  handleRequest<T>(api.get<ApiResponse<T>>(url, createRequestConfig(token)));
 
 export const post = async <T>(
   url: string,
-  data: any
-): Promise<ApiResponse<T>> => handleRequest<T>(api.post<ApiResponse<T>>(url, data));
+  data: any,
+  token?: string
+): Promise<ApiResponse<T>> => 
+  handleRequest<T>(api.post<ApiResponse<T>>(url, data, createRequestConfig(token)));
 
-export const put = async <T>(url: string, data: any): Promise<ApiResponse<T>> =>
-  handleRequest<T>(api.put<ApiResponse<T>>(url, data));
+export const put = async <T>(
+  url: string,
+  data: any,
+  token?: string
+): Promise<ApiResponse<T>> =>
+  handleRequest<T>(api.put<ApiResponse<T>>(url, data, createRequestConfig(token)));
 
 export const patch = async <T>(
   url: string,
-  data: any
-): Promise<ApiResponse<T>> => handleRequest<T>(api.patch<ApiResponse<T>>(url, data));
+  data: any,
+  token?: string
+): Promise<ApiResponse<T>> => 
+  handleRequest<T>(api.patch<ApiResponse<T>>(url, data, createRequestConfig(token)));
 
-export const remove = async <T>(url: string): Promise<ApiResponse<T>> =>
-  handleRequest<T>(api.delete<ApiResponse<T>>(url));
+export const remove = async <T>(url: string, token?: string): Promise<ApiResponse<T>> =>
+  handleRequest<T>(api.delete<ApiResponse<T>>(url, createRequestConfig(token)));

@@ -15,6 +15,7 @@ const Tracking = lazy(() => import("../../screen").then(module => ({ default: mo
 const User = lazy(() => import("../../screen").then(module => ({ default: module.User })));
 const Vehicle = lazy(() => import("../../screen").then(module => ({ default: module.Vehicle })));
 const Report = lazy(() => import("../../screen").then(module => ({ default: module.Report })));
+const FormArea = lazy(() => import("../../screen").then(module => ({ default: module.AreaForm })));
 
 
 export const routes: Route[] = [
@@ -29,10 +30,14 @@ export const routes: Route[] = [
     {
         path: "/area",
         element:(
-            <ValidateGuard permission={[Rol.ADMIN]}>
+            <ValidateGuard permission={[Rol.SUPERADMIN]}>
                 <Area />
             </ValidateGuard>
         ) 
+    },
+    {
+        path: "/areaForm",
+        element: <FormArea />
     },
     {
         path: "/assignment",

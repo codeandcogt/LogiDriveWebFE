@@ -1,9 +1,13 @@
-import { Layout } from "../../themes"
+import { ListArea, Navbar } from "@/components";
+import { Layout } from "../../themes";
+import { Toaster } from "sonner";
 
 export const Area = () => {
   return (
     <Layout>
-        <div>Area</div>
+      <Toaster />
+      <Navbar />
+      <ListArea/>
     </Layout>
-  )
-}
+  );
+};
