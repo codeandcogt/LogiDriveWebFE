@@ -1,20 +1,21 @@
 import { Area } from "@/interface";
 import { ShowToast } from "@/lib";
 import { get, remove } from "@/services";
-import { useAreaStore } from "@/store";
+import { useAreaStore, useSession } from "@/store";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const useListArea = () => {
   const { setArea, setIsEdit, clear } = useAreaStore();
+  const { session }= useSession()
   const navigation = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [idArea, setIdArea] = useState<number>(0);
 
   const fetchArea = async () => {
     try {
-      const response = await get<Area[]>("api/Area");
+      const response = await get<Area[]>("api/Area", session?.token);
       return response.data;
     } catch (error) {
       throw error;
@@ -51,7 +52,7 @@ export const useListArea = () => {
 
   const deleteArea = async (id: number) => {
     try {
-      const response = await remove<any>(`api/Area/Status/${id}`);
+      const response = await remove<any>(`api/Area/Status/${id}`, session?.token);
       if (response.code === 200) {
         ShowToast(
           "¡Área eliminada con éxito!",

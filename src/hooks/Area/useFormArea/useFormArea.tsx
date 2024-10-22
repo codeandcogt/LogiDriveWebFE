@@ -1,13 +1,14 @@
 import { AreaCreate, AreaRequest } from "@/interface";
 import { ShowToast } from "@/lib";
 import { post, put } from "@/services";
-import { useAreaStore } from "@/store";
+import { useAreaStore, useSession } from "@/store";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 export const useFormArea = () => {
   const { area, isEdit } = useAreaStore();
+  const { session } = useSession()
   const navigation = useNavigate();
 
   const initialValues: AreaRequest = {
@@ -60,7 +61,7 @@ export const useFormArea = () => {
         name: values.name,
         description: values.description,
       };
-      const response = await post<any>("api/Area", data);
+      const response = await post<any>("api/Area", data, session?.token);
       if (response.code === 200) {
         navigation("/area");
         ShowToast("Area creada con exito", "Autorización validada");
@@ -73,7 +74,7 @@ export const useFormArea = () => {
 
   const updateArea = async (values: AreaRequest) => {
     try {
-      const response = await put<any>(`api/Area/${area?.idArea}`, values);
+      const response = await put<any>(`api/Area/${area?.idArea}`, values, session?.token);
       if (response.code === 200) {
         ShowToast("Area editada con exito", "Autorización validada");
         navigation("/area");
