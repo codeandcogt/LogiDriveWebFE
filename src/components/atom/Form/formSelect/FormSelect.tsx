@@ -13,7 +13,7 @@ interface FormSelectProps {
   placeholder?: string;
   helperText?: string;
   value?: string;
-  onChange?: (value: string) => void;
+  onChange?: (e: { target: { name: string; value: string } }) => void;
   options: { value: string; label: string }[];
 }
 
@@ -22,10 +22,22 @@ export const FormSelect: React.FC<FormSelectProps> = ({
   name,
   placeholder,
   helperText,
-  value,
+  value = "",
   onChange,
   options,
 }) => {
+  const handleValueChange = (newValue: string) => {
+    if (onChange) {
+      // Simular un evento como lo espera Formik
+      onChange({
+        target: {
+          name: name,
+          value: newValue
+        }
+      });
+    }
+  };
+
   return (
     <div className="mb-4">
       <label
@@ -34,13 +46,20 @@ export const FormSelect: React.FC<FormSelectProps> = ({
       >
         {label}
       </label>
-      <Select onValueChange={onChange} value={value}>
-        <SelectTrigger className="w-full bg-white">
+      <Select 
+        defaultValue={value} 
+        onValueChange={handleValueChange}
+        value={value}
+      >
+        <SelectTrigger id={name} className="w-full bg-white">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
           {options.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
+            <SelectItem 
+              key={option.value} 
+              value={option.value}
+            >
               {option.label}
             </SelectItem>
           ))}
