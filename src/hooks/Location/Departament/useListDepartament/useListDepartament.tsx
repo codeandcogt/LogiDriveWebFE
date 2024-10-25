@@ -10,19 +10,22 @@ export const useListDepartament = () => {
   const { setDepartament, setIsEdit, clear } = useDepartamentStore();
   const navigation = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [idDepartament, setIdDepartament] = useState<number>(0);
-  const {session} = useSession();
+  const [idDepartment, setIdDepartment] = useState<number>(0);
+  const { session } = useSession();
 
   const fetchDepartament = async () => {
     try {
-      const response = await get<Departament[]>("api/Department",session?.token );
+      const response = await get<Departament[]>("api/Department", session?.token);
       return response.data;
     } catch (error) {
       throw error;
     }
   };
 
-  const { data, isLoading, error, refetch, isError } = useQuery<Departament[], Error>({
+  const { data, isLoading, error, refetch, isError } = useQuery<
+    Departament[],
+    Error
+  >({
     queryKey: ["department-api"],
     queryFn: fetchDepartament,
     staleTime: 500,
@@ -42,12 +45,12 @@ export const useListDepartament = () => {
 
   const handleDelete = (data: Departament) => {
     setIsOpen(true);
-    setIdDepartament(data.idDepartment);
+    setIdDepartment(data.idDepartment);
   };
 
   const handleConfirm = () => {
     setIsOpen(false);
-    deleteDepartament(idDepartament);
+    deleteDepartament(idDepartment);
   };
 
   const deleteDepartament = async (id: number) => {
@@ -55,7 +58,7 @@ export const useListDepartament = () => {
       const response = await remove<any>(`api/Department/Status/${id}`);
       if (response.code === 200) {
         ShowToast(
-          "¡Departamento eliminada con éxito!",
+          "¡Departamento eliminado con éxito!",
           "Los cambios han sido guardados correctamente"
         );
         refetch();
@@ -66,7 +69,6 @@ export const useListDepartament = () => {
         "Por favor, verifica tu conexión e inténtalo nuevamente",
         true
       );
-
       throw Error;
     }
   };
