@@ -1,6 +1,11 @@
+import { FormVehicleParts, Navbar } from "@/components"
+import { Layout } from "@/themes"
 
 export const FormVehiclePart = () => {
   return (
-    <div>FormVehiclePart</div>
+    <Layout>
+      <Navbar/>
+      <FormVehicleParts/>
+    </Layout>
   )
 }

@@ -10,10 +10,10 @@ export const useFormDepartament = () => {
   const { department, isEdit } = useDepartamentStore();
   const navigation = useNavigate();
 
-    const initialValues: DepartamentRequest = {
+  const initialValues: DepartamentRequest = {
     name: department?.name || "",
-    description: department?.description || "",
-    status: department?.status || true,
+    status: department?.status ?? true,
+    description: ""
   };
 
   const validationSchema = Yup.object().shape({
@@ -25,12 +25,7 @@ export const useFormDepartament = () => {
         /^[a-zA-ZáéíóúÁÉÍÓÚñÑ][a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/,
         "El nombre debe comenzar con una letra y solo puede contener letras y espacios"
       ),
-    description: Yup.string()
-      .required("La descripción es requerida")
-      .min(5, "La descripción debe tener al menos 10 caracteres")
-      .max(200, "La descripción no puede tener más de 200 caracteres"),
-
-    status: Yup.boolean().required("El estado es requerido"),
+    
   });
 
   const formik = useFormik({
@@ -58,35 +53,37 @@ export const useFormDepartament = () => {
     try {
       const data: DepartamentCreate = {
         name: values.name,
-        description: values.description,
+        description: ""
       };
       const response = await post<any>("api/Department", data);
       if (response.code === 200) {
         navigation("/location/departament");
-        ShowToast("Departamento creada con exito", "Autorización validada");
+        ShowToast("Departamento creado con éxito", "Autorización validada");
       }
     } catch (error) {
-      ShowToast("Error al crear departamento","", true);
-      throw Error
+      ShowToast("Error al crear departamento", "", true);
+      throw Error;
     }
   };
 
   const updateDepartament = async (values: DepartamentRequest) => {
     try {
-      const response = await put<any>(`api/Department${department?.idDepartment}`, values);
+      const response = await put<any>(
+        `api/Department/${department?.idDepartment}`,
+        values
+      );
       if (response.code === 200) {
-        ShowToast("Departamento editada con exito", "Autorización validada");
+        ShowToast("Departamento editado con éxito", "Autorización validada");
         navigation("/location/departament");
       }
     } catch (error) {
-      ShowToast("Error al crear areá","", true);
+      ShowToast("Error al editar departamento", "", true);
     }
   };
 
-
   const handleClick = () => {
-    navigation("/location/departament"); 
+    navigation("/location/departament");
   };
 
-  return { formik, isEdit, handleClick};
-}
+  return { formik, isEdit, handleClick };
+};
