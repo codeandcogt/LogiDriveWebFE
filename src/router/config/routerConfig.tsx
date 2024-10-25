@@ -22,6 +22,9 @@ const VehicleDetail = lazy(() => import("../../screen").then(module => ({ defaul
 const VehiclePart = lazy(() => import("../../screen").then(module => ({ default: module.VehiclePart })));
 const FormVehicleDetail = lazy(() => import("../../screen").then(module => ({ default: module.FormVehicleDetail })));
 const FormVehiclePart = lazy(() => import("../../screen").then(module => ({ default: module.FormVehiclePart })));
+const FormDepartment = lazy(() => import("../../screen").then(module => ({ default: module.FormDepartment })));
+const FormMunicipality = lazy(() => import("../../screen").then(module => ({ default: module.FormMunicipality })));
+
 
 
 
@@ -105,6 +108,13 @@ export const routes: Route[] = [
     {
         path: "/location/municipality",
         element: <Municipality />
+    },
+    {
+        path: "/location/formDepartment",
+        element: <FormDepartment />
+    },
+    {
+        path: "/location/formMunicipality",
+        element: <FormMunicipality />
     }
-
 ];
