@@ -4,13 +4,11 @@ import { Pencil, Trash2 } from "lucide-react";
 import { Departament } from "@/interface";
 
 export const createColumnsDepartament = (
-  
-
   handleEdit: (departament: Departament) => void,
   handleDelete: (departament: Departament) => void
 ): ColumnDef<Departament>[] => [
   {
-    accessorKey: "idDepartament",
+    accessorKey: "idDepartment", // Cambiado de idDepartament a idDepartment
     header: "ID",
   },
   {
@@ -18,23 +16,27 @@ export const createColumnsDepartament = (
     header: "Nombre",
   },
   {
-    accessorKey: "description",
-    header: "Descripción",
+    accessorKey: "status",  // Agregado el campo status
+    header: "Estado",
     cell: ({ row }) => {
-      const description = row.getValue("description") as string;
+      const status = row.getValue("status") as boolean;
       return (
-        <div className="max-w-[300px] truncate" title={description}>
-          {description}
+        <div className="text-center">
+          {status ? "Activo" : "Inactivo"}
         </div>
       );
     },
   },
   {
-    accessorKey: "creationDate",
-    header: "Fecha de Creación",
+    accessorKey: "towns",  // Agregado el campo towns
+    header: "Municipios",
     cell: ({ row }) => {
-      const date = new Date(row.getValue("creationDate"));
-      return date.toLocaleDateString();
+      const towns = row.getValue("towns") as any[];
+      return (
+        <div className="max-w-[300px] truncate">
+          {towns.length} municipios
+        </div>
+      );
     },
   },
   {

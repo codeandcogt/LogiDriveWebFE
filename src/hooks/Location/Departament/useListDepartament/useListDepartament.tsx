@@ -1,7 +1,7 @@
 import { Departament } from "@/interface";
 import { ShowToast } from "@/lib";
 import { get, remove } from "@/services";
-import { useDepartamentStore } from "@/store";
+import { useDepartamentStore, useSession } from "@/store";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,10 +11,11 @@ export const useListDepartament = () => {
   const navigation = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [idDepartament, setIdDepartament] = useState<number>(0);
+  const {session} = useSession();
 
   const fetchDepartament = async () => {
     try {
-      const response = await get<Departament[]>("api/Department");
+      const response = await get<Departament[]>("api/Department",session?.token );
       return response.data;
     } catch (error) {
       throw error;
@@ -30,7 +31,7 @@ export const useListDepartament = () => {
   const handleClick = () => {
     setIsEdit(false);
     clear();
-    navigation("/DepartamentForm");
+    navigation("/location/DepartamentForm");
   };
 
   const handleEdit = (data: Departament) => {
