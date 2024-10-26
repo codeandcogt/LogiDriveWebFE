@@ -1,4 +1,4 @@
-import { CardForm, FormInput, FormTextarea } from "@/components/atom";
+import { CardForm, FormInput } from "@/components/atom";
 import { useFormDepartament } from "@/hooks/Location/Departament";
 
 export const FormDepartament = () => {
@@ -26,18 +26,6 @@ export const FormDepartament = () => {
             helperText={formik.errors.name}
           />
         </div>
-        <div className="space-y-2">
-          <FormTextarea
-            label="Nombre del Departamento"
-            name="description"
-            placeholder="Ingrese el nombre del departamento"
-            value={formik.values.description}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            helperText={formik.errors.description}
-          />
-        </div>
-
       </div>
     </CardForm>
   );

@@ -7,9 +7,9 @@ export interface Departament {
   
   
   export interface DepartamentRequest {
+    idDepartment: number
     name: string;
-    description: string;
     status?: boolean;
   }
   
-  export interface DepartamentCreate extends Omit<DepartamentRequest, 'status'> {}
+  export interface DepartamentCreate{}

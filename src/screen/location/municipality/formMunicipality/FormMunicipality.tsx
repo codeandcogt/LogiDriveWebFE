@@ -1,9 +1,10 @@
-import { Layout } from "@/themes";
+import { FormMunicipality } from "@/components"
+import { Layout } from "@/themes"
 
-export const FormMunicipality = () => {
+export const formMunicipality = () => {
   return (
     <Layout>
-      <div>FormMunicipality</div>
+    <FormMunicipality />
     </Layout>
-  );
-};
+  )
+}
