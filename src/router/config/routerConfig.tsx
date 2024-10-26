@@ -16,10 +16,16 @@ const User = lazy(() => import("../../screen").then(module => ({ default: module
 const Vehicle = lazy(() => import("../../screen").then(module => ({ default: module.Vehicle })));
 const Report = lazy(() => import("../../screen").then(module => ({ default: module.Report })));
 const FormArea = lazy(() => import("../../screen").then(module => ({ default: module.AreaForm })));
+const Departament = lazy(() => import("../../screen").then(module => ({ default: module.Departament })));
+const Municipality = lazy(() => import("../../screen").then(module => ({ default: module.Municipality })));
 const VehicleDetail = lazy(() => import("../../screen").then(module => ({ default: module.VehicleDetail })));
 const VehiclePart = lazy(() => import("../../screen").then(module => ({ default: module.VehiclePart })));
 const FormVehicleDetail = lazy(() => import("../../screen").then(module => ({ default: module.FormVehicleDetail })));
 const FormVehiclePart = lazy(() => import("../../screen").then(module => ({ default: module.FormVehiclePart })));
+const FormDepartment = lazy(() => import("../../screen").then(module => ({ default: module.FormDepartment })));
+const FormMunicipality = lazy(() => import("../../screen").then(module => ({ default: module.formMunicipality })));
+
+
 const FormUser = lazy(() => import("../../screen").then(module => ({ default: module.FormUser })));
 
 
@@ -95,6 +101,22 @@ export const routes: Route[] = [
     {
         path: "/report",
         element: <Report />
+    },
+    {
+        path: "/location/departament",
+        element: <Departament />
+    },
+    {
+        path: "/location/municipality",
+        element: <Municipality />
+    },
+    {
+        path: "/location/formDepartment",
+        element: <FormDepartment />
+    },
+    {
+        path: "/location/formMunicipality",
+        element: <FormMunicipality />
     },
     {
         path: "/formUser",

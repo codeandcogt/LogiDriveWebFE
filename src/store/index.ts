@@ -1,4 +1,7 @@
 export * from "./useSession"
 export * from "./useAreaStore"
+export * from  "./useDepartamentStore"
+export * from "./useVehicle"
+export * from "./useMunicipalityStore"
 export * from "./useVehicle"
 export * from "./useUserStore"
