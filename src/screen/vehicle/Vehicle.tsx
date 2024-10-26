@@ -13,7 +13,7 @@ export const Vehicle = () => {
           <div className="mr-2">
             <ButtonNav
               imageUrl={
-                "https://i.pinimg.com/564x/ca/f6/ae/caf6ae72543eaee2599552d00704983c.jpg"
+                "https://i.pinimg.com/564x/95/be/c8/95bec838a563bf357c775c19cf531d97.jpg"
               }
               alt={""}
               title={"Vehiculos"}
@@ -24,7 +24,7 @@ export const Vehicle = () => {
           <div className="ml-2">
             <ButtonNav
               imageUrl={
-                "https://i.pinimg.com/564x/ca/f6/ae/caf6ae72543eaee2599552d00704983c.jpg"
+                "https://i.pinimg.com/564x/03/71/68/037168ce9d663d7b78a547a267e3e20a.jpg"
               }
               alt={""}
               title={"Partes"}
