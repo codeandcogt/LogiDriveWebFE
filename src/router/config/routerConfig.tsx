@@ -103,7 +103,6 @@ export const routes: Route[] = [
         element: <Report />
     },
     {
-<<<<<<< HEAD
         path: "/location/departament",
         element: <Departament />
     },
@@ -118,9 +117,9 @@ export const routes: Route[] = [
     {
         path: "/location/formMunicipality",
         element: <FormMunicipality />
-=======
+    },
+    {
         path: "/formUser",
         element: <FormUser />
->>>>>>> 009d4008fc8de3a743016e3569e2b3182ec9855b
     }
 ];
