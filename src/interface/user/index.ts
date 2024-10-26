@@ -1,0 +1,1 @@
+export type { UserInterface, RequestUser, Role } from "./UserInterface"

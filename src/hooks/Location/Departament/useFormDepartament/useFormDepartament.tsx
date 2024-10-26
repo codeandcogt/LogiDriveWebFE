@@ -1,5 +1,5 @@
 import { DepartamentCreate, DepartamentRequest } from "@/interface/location/departament/Departament";
-import { useDepartamentStore } from "@/store";
+import { useDepartamentStore, useSession } from "@/store";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { useFormik } from "formik";
@@ -8,12 +8,13 @@ import { ShowToast } from "@/lib";
 
 export const useFormDepartament = () => {
   const { department, isEdit } = useDepartamentStore();
+  const { session } = useSession();
   const navigation = useNavigate();
 
   const initialValues: DepartamentRequest = {
+    idDepartment:department?.idDepartment || 0,
     name: department?.name || "",
     status: department?.status ?? true,
-    description: ""
   };
 
   const validationSchema = Yup.object().shape({
@@ -53,9 +54,9 @@ export const useFormDepartament = () => {
     try {
       const data: DepartamentCreate = {
         name: values.name,
-        description: ""
+        status: true,
       };
-      const response = await post<any>("api/Department", data);
+      const response = await post<any>("api/Department", data, session?.token);
       if (response.code === 200) {
         navigation("/location/departament");
         ShowToast("Departamento creado con éxito", "Autorización validada");
@@ -68,10 +69,14 @@ export const useFormDepartament = () => {
 
   const updateDepartament = async (values: DepartamentRequest) => {
     try {
-      const response = await put<any>(
-        `api/Department/${department?.idDepartment}`,
-        values
-      );
+      const data: DepartamentRequest = {
+        idDepartment:department?.idDepartment || 0, 
+        name: values.name,
+        status: values.status,
+      }
+      console.log(department?.idDepartment, "Deparmentid")
+      const response = await put<any>(`api/Department/${department?.idDepartment}`, data, session?.token);
+      console.log(response)
       if (response.code === 200) {
         ShowToast("Departamento editado con éxito", "Autorización validada");
         navigation("/location/departament");

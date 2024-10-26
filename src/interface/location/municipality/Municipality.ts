@@ -1,6 +1,16 @@
-export interface Municipality {
-    idDepartment: number
+  export interface Municipality {
+    idMunicipality: number;
     name: string
     status: boolean
-    towns: any[]
+    idDepartment: number
   }
+
+  export interface MunicipalityRequest {
+    idMunicipality: number;
+    name: string;
+    status?: boolean;
+    idDepartment: number
+  }
+
+  
+  export interface MunicipalityCreate{}

@@ -26,13 +26,14 @@ const FormDepartment = lazy(() => import("../../screen").then(module => ({ defau
 const FormMunicipality = lazy(() => import("../../screen").then(module => ({ default: module.FormMunicipality })));
 const FormAssigment = lazy(() => import("../../screen").then(module => ({ default: module.FormAssigment })));
 const FormBooking = lazy(() => import("../../screen").then(module => ({ default: module.FormBooking })));
+const FormUser = lazy(() => import("../../screen").then(module => ({ default: module.FormUser })));
 
 
 export const routes: Route[] = [
     {
         path: "/home",
         element:(
-            <ValidateGuard  permission={[Rol.ADMIN, Rol.ADMINLOGISTICA, Rol.COLABORADOR, Rol.GARITA, Rol.RRHH, Rol.SUPERADMIN]}>
+            <ValidateGuard  permission={[Rol.ADMIN, Rol.ADMINLOGISTICA, Rol.COLABORADOR, Rol.GARITA, Rol.RRHH, Rol.SUPERADMIN, Rol.LOGISTICA]}>
                 <Home />
             </ValidateGuard>
         ) 
@@ -124,5 +125,10 @@ export const routes: Route[] = [
     {
         path: "/formBooking",
         element: <FormBooking />
+
+    },
+    {
+        path: "/formUser",
+        element: <FormUser />
     }
 ];

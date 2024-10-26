@@ -34,13 +34,13 @@ export const useListDepartament = () => {
   const handleClick = () => {
     setIsEdit(false);
     clear();
-    navigation("/location/DepartamentForm");
+    navigation("/location/formDepartment");
   };
 
   const handleEdit = (data: Departament) => {
     setIsEdit(true);
     setDepartament(data);
-    navigation("/location/DepartamentForm");
+    navigation("/location/formDepartment");
   };
 
   const handleDelete = (data: Departament) => {
@@ -55,7 +55,7 @@ export const useListDepartament = () => {
 
   const deleteDepartament = async (id: number) => {
     try {
-      const response = await remove<any>(`api/Department/Status/${id}`);
+      const response = await remove<any>(`api/Department/${id}`, session?.token);
       if (response.code === 200) {
         ShowToast(
           "¡Departamento eliminado con éxito!",
