@@ -1,7 +1,7 @@
 import { Toaster } from "sonner";
 import { Layout } from "../../themes";
 import React from "react";
-import { Navbar } from "@/components";
+import { HomeComponent, Navbar } from "@/components";
 
 export const Home: React.FC = () => {
 
@@ -9,7 +9,7 @@ export const Home: React.FC = () => {
     <Layout>
       <Toaster />
       <Navbar />
-      <div>Home</div>
+      <HomeComponent/>
     </Layout>
   );
 };
