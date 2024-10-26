@@ -1,4 +1,4 @@
-import { RequestVehiclePart, VehicleDetail } from "@/interface";
+import { RequestVehiclePart, SelectOption, VehicleDetail } from "@/interface";
 import { ShowToast } from "@/lib";
 import { get, post, put } from "@/services";
 import { useSession, useVehiclePartStore } from "@/store";
@@ -6,11 +6,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-
-interface SelectOption {
-  value: string;
-  label: string;
-}
 
 export const useFormVehicleParts = () => {
   const navigation = useNavigate();

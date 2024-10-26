@@ -31,7 +31,6 @@ export const useFormArea = () => {
       .min(5, "La descripción debe tener al menos 10 caracteres")
       .max(200, "La descripción no puede tener más de 200 caracteres"),
 
-    status: Yup.boolean().required("El estado es requerido"),
   });
 
   const formik = useFormik({
