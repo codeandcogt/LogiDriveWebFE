@@ -1,14 +1,16 @@
   export interface Municipality {
     idMunicipality: number;
     name: string
-    idDepartment: number
     status: boolean
+    idDepartment: number
   }
 
   export interface MunicipalityRequest {
+    idMunicipality: number;
     name: string;
-    description: string;
     status?: boolean;
+    idDepartment: number
   }
+
   
-  export interface MunicipalityCreate extends Omit<MunicipalityRequest, 'status'> {}
+  export interface MunicipalityCreate{}

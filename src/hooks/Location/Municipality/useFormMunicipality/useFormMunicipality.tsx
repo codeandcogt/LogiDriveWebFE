@@ -1,20 +1,51 @@
 import { MunicipalityCreate, MunicipalityRequest } from "@/interface/location/municipality/Municipality";
-import { useMunicipalityStore } from "@/store";
+import { Departament } from "@/interface/location/departament/Departament";
+import { useMunicipalityStore, useSession } from "@/store";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { post, put } from "@/services";
+import { post, put, get } from "@/services";
 import { ShowToast } from "@/lib";
+import { useQuery } from "@tanstack/react-query";
+import { SelectOption } from "@/interface";
 
 export const useFormMunicipality = () => {
   const { municipality, isEdit } = useMunicipalityStore();
+  const { session } = useSession();
   const navigation = useNavigate();
 
   const initialValues: MunicipalityRequest = {
+    idMunicipality: municipality?.idMunicipality || 0,
     name: municipality?.name || "",
     status: municipality?.status ?? true,
-    description: ""
+    idDepartment: municipality?.idDepartment || 0,
   };
+
+  const fetchDepartments = async () => {
+    try {
+      const response = await get<Departament[]>( "api/Department",session?.token);
+      return response.data;
+    } catch (error) {
+      throw Error;
+    }
+  };
+
+  const { data: departmentsData, isLoading } = useQuery<
+    Departament[],
+    Error,
+    SelectOption[]
+  >({
+    queryKey: ["api-Department"],
+    queryFn: fetchDepartments,
+    staleTime: 5000,
+    select: (departments) =>
+      departments.map((department) => ({
+        value: department.idDepartment.toString(),
+        label: department.name,
+      })),
+  });
+
+ 
 
   const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -25,6 +56,8 @@ export const useFormMunicipality = () => {
         /^[a-zA-ZáéíóúÁÉÍÓÚñÑ][a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/,
         "El nombre debe comenzar con una letra y solo puede contener letras y espacios"
       ),
+    idDepartment: Yup.string()
+      .required("El departamento es requerido"),
   });
 
   const formik = useFormik({
@@ -52,9 +85,10 @@ export const useFormMunicipality = () => {
     try {
       const data: MunicipalityCreate = {
         name: values.name,
-        description: ""
+        status: true,
+        idDepartment: Number(values.idDepartment),
       };
-      const response = await post<any>("api/Town", data);
+      const response = await post<any>("api/Town", data, session?.token);
       if (response.code === 200) {
         navigation("/location/municipality");
         ShowToast("Municipio creado con éxito", "Autorización validada");
@@ -67,10 +101,14 @@ export const useFormMunicipality = () => {
 
   const updateMunicipality = async (values: MunicipalityRequest) => {
     try {
-      const response = await put<any>(
-        `api/Town/${municipality?.idMunicipality}`,
-        values
-      );
+      const data: MunicipalityRequest = {
+        idMunicipality: municipality?.idMunicipality || 0,
+        name: values.name,
+        status: values.status,
+        idDepartment: Number(values.idDepartment),
+      };
+      
+      const response = await put<any>(`api/Town/${municipality?.idMunicipality}`,data,session?.token);
       if (response.code === 200) {
         ShowToast("Municipio editado con éxito", "Autorización validada");
         navigation("/location/municipality");
@@ -84,5 +122,11 @@ export const useFormMunicipality = () => {
     navigation("/location/municipality");
   };
 
-  return { formik, isEdit, handleClick };
+  return { 
+    formik, 
+    isEdit, 
+    handleClick, 
+    departmentsData, 
+    isLoading 
+  };
 };
