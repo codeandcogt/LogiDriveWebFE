@@ -34,6 +34,7 @@ interface DynamicTableProps<T> {
   data: T[];
   filterColumn: string;
   onClick?: () => void;
+  showAdd?: boolean;
 }
 
 export function TableData<T>({
@@ -41,6 +42,7 @@ export function TableData<T>({
   data,
   filterColumn,
   onClick,
+  showAdd = true,
 }: DynamicTableProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -105,9 +107,11 @@ export function TableData<T>({
               })}
           </DropdownMenuContent>
         </DropdownMenu>
-        <Button className="ml-2" onClick={onClick}>
-          ADD
-        </Button>
+        {showAdd && (
+          <Button className="ml-2" onClick={onClick}>
+            ADD
+          </Button>
+        )}
       </div>
       <div className="rounded-lg border">
         <Table className="bg-white rounded-lg">

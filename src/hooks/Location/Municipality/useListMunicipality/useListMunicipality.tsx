@@ -55,7 +55,7 @@ export const useListMunicipality = () => {
 
   const deleteMunicipality = async (id: number) => {
     try {
-      const response = await remove<any>(`api/Town/Status/${id}`);
+      const response = await remove<any>(`api/Town/${id}`);
       if (response.code === 200) {
         ShowToast(
           "¡Municipio eliminado con éxito!",

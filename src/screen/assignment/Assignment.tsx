@@ -1,9 +1,11 @@
-import { Layout } from "../../themes"
+import { ListAssigment, Navbar } from "@/components";
+import { Layout } from "../../themes";
 
 export const Assignment = () => {
   return (
     <Layout>
-        <div>Assignment</div>
+      <Navbar />
+      <ListAssigment />
     </Layout>
-  )
-}
+  );
+};

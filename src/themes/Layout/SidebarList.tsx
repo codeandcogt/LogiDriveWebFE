@@ -41,15 +41,7 @@ export const sidebarItems: SidebarItemConfig[] = [
     text: "Solicitudes",
     url: "/request",
     alert: true,
-    rol: [
-      Rol.ADMIN,
-      Rol.ADMINLOGISTICA,
-      Rol.COLABORADOR,
-      Rol.GARITA,
-      Rol.RRHH,
-      Rol.SUPERADMIN,
-      Rol.LOGISTICA,
-    ],
+    rol: [],
   },
   {
     icon: <FolderIcon width="20px" height="20px" />,
@@ -67,7 +59,7 @@ export const sidebarItems: SidebarItemConfig[] = [
     icon: <CompassIcon width="20px" height="20px" />,
     text: "Tracking",
     url: "/tracking",
-    rol: [Rol.ADMIN, Rol.ADMINLOGISTICA, Rol.SUPERADMIN, Rol.LOGISTICA],
+    rol: [],
   },
   {
     icon: <TruckIcon width="20px" height="20px" />,
@@ -79,7 +71,7 @@ export const sidebarItems: SidebarItemConfig[] = [
     icon: <WrenchIcon width="20px" height="20px" />,
     text: "Mantenimiento",
     url: "/maintenance",
-    rol: [Rol.ADMIN, Rol.ADMINLOGISTICA, Rol.SUPERADMIN, Rol.LOGISTICA],
+    rol: [],
   },
   {
     icon: <UserIcon width="20px" height="20px" />,
