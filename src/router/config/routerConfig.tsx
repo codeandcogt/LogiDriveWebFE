@@ -23,7 +23,7 @@ const VehiclePart = lazy(() => import("../../screen").then(module => ({ default:
 const FormVehicleDetail = lazy(() => import("../../screen").then(module => ({ default: module.FormVehicleDetail })));
 const FormVehiclePart = lazy(() => import("../../screen").then(module => ({ default: module.FormVehiclePart })));
 const FormDepartment = lazy(() => import("../../screen").then(module => ({ default: module.FormDepartment })));
-const FormMunicipality = lazy(() => import("../../screen").then(module => ({ default: module.Municipality })));
+const FormMunicipality = lazy(() => import("../../screen").then(module => ({ default: module.formMunicipality })));
 const FormAssigment = lazy(() => import("../../screen").then(module => ({ default: module.FormAssigment })));
 const FormBooking = lazy(() => import("../../screen").then(module => ({ default: module.FormBooking })));
 const FormUser = lazy(() => import("../../screen").then(module => ({ default: module.FormUser })));

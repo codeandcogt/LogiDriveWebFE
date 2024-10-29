@@ -8,7 +8,7 @@ export const createColumnsMunicipality = (
   handleDelete: (municipality: Municipality) => void
 ): ColumnDef<Municipality>[] => [
   {
-    accessorKey: "idMunicipality",
+    accessorKey: "idTown",
     header: "ID",
   },
   {
