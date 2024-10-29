@@ -15,7 +15,7 @@ export const useFormMunicipality = () => {
   const navigation = useNavigate();
 
   const initialValues: MunicipalityRequest = {
-    idMunicipality: municipality?.idMunicipality || 0,
+    idTown: municipality?.idTown || 0,
     name: municipality?.name || "",
     status: municipality?.status ?? true,
     idDepartment: municipality?.idDepartment || 0,
@@ -67,8 +67,11 @@ export const useFormMunicipality = () => {
     validateOnBlur: false,
     onSubmit: async (values, { setSubmitting }) => {
       setSubmitting(true);
+      console.log(isEdit)
+      console.log(municipality?.idTown)
+
       try {
-        if (isEdit && municipality?.idMunicipality) {
+        if (isEdit && municipality?.idTown) {
           await updateMunicipality(values);
         } else {
           await createMunicipality(values);
@@ -82,6 +85,7 @@ export const useFormMunicipality = () => {
   });
 
   const createMunicipality = async (values: MunicipalityRequest) => {
+    console.log("create")
     try {
       const data: MunicipalityCreate = {
         name: values.name,
@@ -89,6 +93,7 @@ export const useFormMunicipality = () => {
         idDepartment: Number(values.idDepartment),
       };
       const response = await post<any>("api/Town", data, session?.token);
+      console.log(response, "response create")
       if (response.code === 200) {
         navigation("/location/municipality");
         ShowToast("Municipio creado con éxito", "Autorización validada");
@@ -100,15 +105,17 @@ export const useFormMunicipality = () => {
   };
 
   const updateMunicipality = async (values: MunicipalityRequest) => {
+    console.log("update")
     try {
       const data: MunicipalityRequest = {
-        idMunicipality: municipality?.idMunicipality || 0,
+        idTown: municipality?.idTown || 0,
         name: values.name,
         status: values.status,
         idDepartment: Number(values.idDepartment),
       };
       
-      const response = await put<any>(`api/Town/${municipality?.idMunicipality}`,data,session?.token);
+      const response = await put<any>(`api/Town/${municipality?.idTown}`,data,session?.token);
+      console.log(response, "response update")
       if (response.code === 200) {
         ShowToast("Municipio editado con éxito", "Autorización validada");
         navigation("/location/municipality");

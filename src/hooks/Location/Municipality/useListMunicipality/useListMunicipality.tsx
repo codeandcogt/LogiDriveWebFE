@@ -38,6 +38,7 @@ export const useListMunicipality = () => {
   };
 
   const handleEdit = (data: Municipality) => {
+    console.log("data", data)
     setIsEdit(true);
     setMunicipality(data);
     navigation("/location/formMunicipality");
@@ -45,7 +46,7 @@ export const useListMunicipality = () => {
 
   const handleDelete = (data: Municipality) => {
     setIsOpen(true);
-    setIdMunicipality(data.idMunicipality);
+    setIdMunicipality(data.idTown);
   };
 
   const handleConfirm = () => {
@@ -55,7 +56,8 @@ export const useListMunicipality = () => {
 
   const deleteMunicipality = async (id: number) => {
     try {
-      const response = await remove<any>(`api/Town/${id}`);
+      const response = await remove<any>(`api/Town/Status/${id}`, session?.token);
+      console.log(response )
       if (response.code === 200) {
         ShowToast(
           "¡Municipio eliminado con éxito!",

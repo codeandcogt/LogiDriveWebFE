@@ -1,12 +1,12 @@
   export interface Municipality {
-    idMunicipality: number;
+    idTown: number;
     name: string
     status: boolean
     idDepartment: number
   }
 
   export interface MunicipalityRequest {
-    idMunicipality: number;
+    idTown: number;
     name: string;
     status?: boolean;
     idDepartment: number
