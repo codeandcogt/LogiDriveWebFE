@@ -21,7 +21,7 @@ export const Location = () => {
               }
               alt={""}
               title={"Departamentos"}
-              onClick={handleMunicipalityClick}
+              onClick={handleClose}
               fill="#a5c589"
             />
           </div>
@@ -32,7 +32,7 @@ export const Location = () => {
               }
               alt={""}
               title={"Municipalidad"}
-              onClick={handleClose}
+              onClick={handleMunicipalityClick}
             />
           </div>
         </div>
