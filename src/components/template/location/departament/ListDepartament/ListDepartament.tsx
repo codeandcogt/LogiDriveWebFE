@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ModalDelete, TableData } from "@/components/atom";
 import { Departament } from "@/interface";
 import { TableSkeleton } from "@/components/molecule";
