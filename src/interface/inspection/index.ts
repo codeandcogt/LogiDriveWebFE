@@ -1,1 +1,1 @@
-export * from "./inspection";
+export type { InspectionInterface,} from "./inspection";

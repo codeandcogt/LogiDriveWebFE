@@ -1,18 +1,18 @@
-import { Area} from "@/interface";
+import { InspectionInterface} from "@/interface";
 import { create } from "zustand";
 
-interface AreaPropStore {
-    area: Area | null;
-    setArea: (data: Area | null) => void;
+interface InspectionProps {
+    inspection: InspectionInterface | null;
+    setInspection: (data: InspectionInterface | null) => void;
     clear: () => void;
     isEdit: boolean;
     setIsEdit: (data: boolean)=>void
 }
 
-export const useAreaStore = create<AreaPropStore>((set) => ({
-    area: null,
-    setArea: (data) => set({ area: data }),
-    clear: () => set({ area: null }),
+export const useInspectionStore = create<InspectionProps>((set) => ({
+    inspection: null,
+    setInspection: (data) => set({ inspection: data }),
+    clear: () => set({ inspection: null }),
     isEdit: false,
     setIsEdit: (item) => set({ isEdit: item })
 }));
