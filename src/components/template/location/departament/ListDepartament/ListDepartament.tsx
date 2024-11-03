@@ -49,7 +49,9 @@ export const ListDepartament: React.FC = () => {
         onConfirm={handleConfirm}
         onCancel={() => setIsOpen(false)}
       />
-      <ModalAlertError errorTitle={"No puede eliminar este departamento"} errorDescription={"El departamento esta enlazado a un municipio"} open={open} onOpenChange={()=>setOpen(false)}/>
+      <ModalAlertError errorTitle={"No puede eliminar este departamento"} 
+      errorDescription={"El departamento esta enlazado a un municipio"} 
+      open={open} onOpenChange={()=>setOpen(false)}/>
     </>
   );
 };
