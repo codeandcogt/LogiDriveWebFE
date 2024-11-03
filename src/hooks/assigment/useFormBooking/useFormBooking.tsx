@@ -137,11 +137,11 @@ export const useFormBooking = () => {
 
   const Type_Trip = [
     {
-      value: "1",
-      label: "Personas",
+      value: "Personal",
+      label: "Personal",
     },
     {
-      value: "2",
+      value: "Grupal",
       label: "Grupal",
     },
   ];
