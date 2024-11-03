@@ -12,6 +12,7 @@ export const useListDepartament = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [idDepartment, setIdDepartment] = useState<number>(0);
   const { session } = useSession();
+  const [open, setOpen] = useState<boolean>(false)
 
   const fetchDepartament = async () => {
     try {
@@ -56,12 +57,19 @@ export const useListDepartament = () => {
   const deleteDepartament = async (id: number) => {
     try {
       const response = await remove<any>(`api/Department/${id}`, session?.token);
+      console.log("response", response)
       if (response.code === 200) {
         ShowToast(
           "¡Departamento eliminado con éxito!",
           "Los cambios han sido guardados correctamente"
         );
         refetch();
+      }else if(response.code === 500) {
+        ShowToast(
+          "No se puede eliminar",
+          "El departamento esta enlazado con municipio"
+        );
+        setOpen(true)
       }
     } catch (error) {
       ShowToast(
@@ -89,5 +97,7 @@ export const useListDepartament = () => {
     isOpen,
     setIsOpen,
     handleConfirm,
+    open,
+    setOpen,
   };
 };

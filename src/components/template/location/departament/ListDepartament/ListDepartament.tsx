@@ -4,6 +4,7 @@ import { Departament } from "@/interface";
 import { TableSkeleton } from "@/components/molecule";
 import { createColumnsDepartament } from "./createColumnsDepartament";
 import { useListDepartament } from "@/hooks/Location/Departament";
+import { ModalAlertError } from "@/components/atom/ModalAlertError";
 
 export const ListDepartament: React.FC = () => {
   const {
@@ -17,8 +18,12 @@ export const ListDepartament: React.FC = () => {
     isOpen,
     setIsOpen,
     handleConfirm,
+    open,
+    setOpen,
   } = useListDepartament();
   const columns = createColumnsDepartament(handleEdit, handleDelete);
+
+  
 
   if (isLoading) {
     return <TableSkeleton />;
@@ -44,6 +49,9 @@ export const ListDepartament: React.FC = () => {
         onConfirm={handleConfirm}
         onCancel={() => setIsOpen(false)}
       />
+      <ModalAlertError errorTitle={"No puede eliminar este departamento"} 
+      errorDescription={"El departamento esta enlazado a un municipio"} 
+      open={open} onOpenChange={()=>setOpen(false)}/>
     </>
   );
 };
