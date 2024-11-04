@@ -1,0 +1,1 @@
+export type { InspectionInterface, PartInspected, LogProcess, CreateInspection } from './inspection';
