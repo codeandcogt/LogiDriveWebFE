@@ -1,9 +1,11 @@
+import { MapView, Navbar } from "@/components"
 import { Layout } from "../../themes"
 
 export const Tracking = () => {
   return (
     <Layout>
-        <div>Tracking</div>
+        <Navbar/>
+        <MapView/>
     </Layout>
   )
 }

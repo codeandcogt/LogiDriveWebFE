@@ -27,19 +27,23 @@ export const useFormBooking = () => {
     idLogReservation: assigment?.idLogReservation || 0,
     status: true,
     creationDate: "",
+    statusTrip: false,
+    dayQuantity: 0,
   };
 
   const bookingValidationSchema = yup.object().shape({
-
     comment: yup
       .string()
       .min(5, "El comentario debe tener al menos 5 caracteres")
       .max(500, "El comentario no puede exceder los 500 caracteres")
       .required("El comentario es requerido"),
 
-    tripType: yup
-      .string()
-      .required("El tipo de viaje es requerido"),
+    dayQuantity: yup
+      .number()
+      .positive("Solo valores positivos")
+      .required("El comentario es requerido"),
+
+    tripType: yup.string().required("El tipo de viaje es requerido"),
 
     startDate: yup
       .string()
@@ -93,6 +97,8 @@ export const useFormBooking = () => {
           idVehicle: values.idVehicle,
           idLogReservation: initialValues.idLogReservation,
           status: true,
+          statusTrip: false,
+          dayQuantity: values.dayQuantity
         };
 
         await createAssignment(data);
@@ -137,11 +143,11 @@ export const useFormBooking = () => {
 
   const Type_Trip = [
     {
-      value: "1",
-      label: "Personas",
+      value: "Personal",
+      label: "Personal",
     },
     {
-      value: "2",
+      value: "Grupal",
       label: "Grupal",
     },
   ];

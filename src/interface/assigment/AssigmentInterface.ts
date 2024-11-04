@@ -29,6 +29,8 @@ export interface RequestBooking {
   idLogReservation: number
   status: boolean
   creationDate?: string
+  statusTrip?: boolean
+  dayQuantity: number
 }
 
 export interface CreateBooking {
@@ -39,4 +41,6 @@ export interface CreateBooking {
   idVehicle: number
   idLogReservation: number
   status: boolean
+  statusTrip?: boolean
+  dayQuantity: number
 }
