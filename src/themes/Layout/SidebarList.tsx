@@ -41,7 +41,7 @@ export const sidebarItems: SidebarItemConfig[] = [
     text: "Solicitudes",
     url: "/request",
     alert: true,
-    rol: [Rol.SUPERADMIN],
+    rol: [],
   },
   {
     icon: <FolderIcon width="20px" height="20px" />,
@@ -71,7 +71,7 @@ export const sidebarItems: SidebarItemConfig[] = [
     icon: <WrenchIcon width="20px" height="20px" />,
     text: "Mantenimiento",
     url: "/maintenance",
-    rol: [Rol.SUPERADMIN],
+    rol: [],
   },
   {
     icon: <UserIcon width="20px" height="20px" />,
