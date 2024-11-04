@@ -1,8 +1,15 @@
-import React from "react"
-
+import { Toaster } from "sonner";
+import { Layout } from "../../themes";
+import React from "react";
+import { HomeComponent, Navbar } from "@/components";
 
 export const Home: React.FC = () => {
+
   return (
-    <div>Home</div>
-  )
-}
+    <Layout>
+      <Toaster />
+      <Navbar />
+      <HomeComponent/>
+    </Layout>
+  );
+};

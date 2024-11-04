@@ -1,0 +1,58 @@
+{
+    "common": {
+      "buttons": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "edit": "Edit",
+        "delete": "Delete",
+        "create": "Create",
+        "submit": "Submit"
+      },
+      "messages": {
+        "success": {
+          "create": "Successfully created!",
+          "update": "Successfully updated!",
+          "delete": "Successfully deleted!"
+        },
+        "error": {
+          "create": "Error creating",
+          "update": "Error updating",
+          "delete": "Error deleting"
+        }
+      }
+    },
+    "areas": {
+      "title": "Areas",
+      "form": {
+        "name": "Name",
+        "description": "Description",
+        "status": "Status"
+      },
+      "validation": {
+        "name": {
+          "required": "Name is required",
+          "min": "Name must be at least {{min}} characters",
+          "max": "Name cannot be more than {{max}} characters",
+          "format": "Name must start with a letter and can only contain letters and spaces"
+        },
+        "description": {
+          "required": "Description is required",
+          "min": "Description must be at least {{min}} characters",
+          "max": "Description cannot be more than {{max}} characters"
+        }
+      },
+      "messages": {
+        "success": {
+          "created": "Area successfully created!",
+          "updated": "Area successfully updated!",
+          "deleted": "Area successfully deleted!"
+        },
+        "error": {
+          "create": "Could not create area",
+          "update": "Could not update area",
+          "delete": "Could not delete area",
+          "tryAgain": "Please check your connection and try again"
+        }
+      }
+    }
+  }
