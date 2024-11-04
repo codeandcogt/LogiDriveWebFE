@@ -1,4 +1,4 @@
-import { CardForm, FormInput, FormSelect } from "@/components/atom";
+import { CardForm, FormInput, FormSelect, FormTextarea } from "@/components/atom";
 import FormDate from "@/components/atom/Form/formDate/FormDate";
 import { useFormBooking } from "@/hooks";
 
@@ -16,7 +16,7 @@ export const FormBookings = () => {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <FormInput
+            <FormTextarea
               label="Comentario"
               name="comment"
               placeholder="Ingrese el motivo o detalles de la reserva"
@@ -24,6 +24,17 @@ export const FormBookings = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               helperText={formik.errors.comment}
+            />
+          </div>
+          <div className="space-y-2">
+            <FormInput
+              label="Accesos permitidos"
+              name="dayQuantity"
+              placeholder="Ingrese la cantidad de accesos permitidos"
+              value={formik.values.dayQuantity}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              helperText={formik.errors.dayQuantity}
             />
           </div>
           <div className="space-y-2">
@@ -48,6 +59,7 @@ export const FormBookings = () => {
               placeholder="Seleccione la fecha de finalización"              
             />
           </div>
+          
           <div className="space-y-2">
             <FormSelect
               label="Tipo de Viaje"
