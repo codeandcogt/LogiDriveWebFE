@@ -91,7 +91,7 @@ export const createColumnsInspection = (
   },
   {
     id: "actions",
-    header: "Acciones",
+    header: "Inspeccionar",
     cell: ({ row }) => {
       const inspection = row.original;
       return (

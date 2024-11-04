@@ -27,6 +27,7 @@ const FormMunicipality = lazy(() => import("../../screen").then(module => ({ def
 const FormAssigment = lazy(() => import("../../screen").then(module => ({ default: module.FormAssigment })));
 const FormBooking = lazy(() => import("../../screen").then(module => ({ default: module.FormBooking })));
 const FormUser = lazy(() => import("../../screen").then(module => ({ default: module.FormUser })));
+const FormInspection = lazy(() => import("../../screen").then(module => ({ default: module.inspectionForm })));
 
 
 export const routes: Route[] = [
@@ -130,5 +131,9 @@ export const routes: Route[] = [
     {
         path: "/formUser",
         element: <FormUser />
+    },
+    {
+        path: "/formInspection",
+        element: <FormInspection />
     }
 ];
