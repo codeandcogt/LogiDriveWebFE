@@ -111,5 +111,3 @@ export const TrackingCard: React.FC<TrackingListCardProps> = ({
     </Card>
   );
 };
-
-export default TrackingCard;
