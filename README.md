@@ -1,3 +1,18 @@
+# LogiDrive
+
+# Enlaces de Interes
+
+<h3>Enlace hacia la carpeta de Google Drive con archivos importantes</h3>
+<a href="https://drive.google.com/drive/folders/1-LaYus5Ez2U1d1kzD69S55GMPJUv5Kr2?usp=drive_link">Google Drive</a>
+
+<h3>Enlace hacia el frontend movil</h3>
+<a href="https://github.com/codeandcogt/LogiDrive">Frontend</a>
+
+<h3>Enlace hacia el Backend</h3>
+<a href="https://github.com/codeandcogt/LogiDriveBE">Frontend</a>
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
